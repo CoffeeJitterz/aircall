@@ -1,12 +1,30 @@
-import React, {useState} from 'react';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
 
 import './css/call.css'
 
 const Call = (props) => {
-  const {createdAt, direction, from, to, via, duration, isArchived, callType} = props;
+  const {id, createdAt, direction, from, to, via, duration, isArchived, callType} = props;
   const open = 'open';
-  const cloes = 'closed';
+  const closed = 'closed';
   const [details, setDetails] = useState(closed);
+  const [seen, setSeen] = useState(false)
+console.log('key', createdAt)
+  // useEffect(() => {
+  //   axios.post(`https://aircall-job.herokuapp.com/activities/${id}`, JSON.stringify({is_archived: seen})).then(response => console.log(response))
+  // }, [seen]);
+
+  const onArchiveCall = (e) => {
+    e.preventDefault();
+    const postData = {
+      is_archived: true
+    };
+    axios.post(
+      `https://aircall-job.herokuapp.com/activities/${id}`, postData,
+    ).then(response => {
+      console.log(response);
+    })
+  }
 
   const parseDate = new Date(createdAt);
   const parseTime = parseDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
@@ -14,12 +32,13 @@ const Call = (props) => {
   return (
     <div className="call">
       {details === closed && (
-        <div>
+        <div onClick={() => setDetails(open)}>
+          <p>{callType}</p>
           <p>{from}</p>
         </div>
       )}
       {details === open && (
-        <div>
+        <div onClick={() => setDetails(closed)}>
       <div className="call_type">
       <p>{callType}</p>
       </div>
@@ -29,7 +48,7 @@ const Call = (props) => {
       </div>
       <div>
         <p>{parseTime}</p>
-        <button>seen </button>
+        <button onClick={onArchiveCall}>seen </button>
       </div> 
       </div>
       )}

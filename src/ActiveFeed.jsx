@@ -8,6 +8,7 @@ const ActivityFeed = (props) => {
   const callList = calls.map(call => {
       return <Call 
               key={call.id}
+              id={call.id}
               createdAt={call.created_at}
               direction={call.outbound}
               from={call.from}
