@@ -10,9 +10,6 @@ const Call = (props) => {
   const [details, setDetails] = useState(closed);
   const [seen, setSeen] = useState(false)
 console.log('key', createdAt)
-  // useEffect(() => {
-  //   axios.post(`https://aircall-job.herokuapp.com/activities/${id}`, JSON.stringify({is_archived: seen})).then(response => console.log(response))
-  // }, [seen]);
 
   const onArchiveCall = (e) => {
     e.preventDefault();
