@@ -20,13 +20,24 @@ const App = () => {
       console.log(err)
     })
   },[]);
+  // const onArchive = (e) => {
+  //   e.preventDefault();
+  //   const postData = {
+  //     is_archived: true
+  //   };
+  //   axios.post(
+  //     `https://aircall-job.herokuapp.com/activities/${id}`, postData,
+  //   ).then(response => {
+  //     console.log(response);
+  //   })
+  // }
 
 console.log(calls)
   return (
     <div className='container'>
       <Header
       />
-      <ActivityFeed calls={calls}/>
+      <ActivityFeed calls={calls} />
       
     </div>
   );

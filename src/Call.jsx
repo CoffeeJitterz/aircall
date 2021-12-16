@@ -4,12 +4,12 @@ import React, {useState, useEffect} from 'react';
 import './css/call.css'
 
 const Call = (props) => {
-  const {id, createdAt, direction, from, to, via, duration, isArchived, callType} = props;
+  const {id, createdAt, direction, from, to, via, duration, isArchived, callType, onArchive} = props;
   const open = 'open';
   const closed = 'closed';
   const [details, setDetails] = useState(closed);
-  const [seen, setSeen] = useState(false)
-console.log('key', createdAt)
+  const [seen, setSeen] = useState(isArchived)
+console.log(seen)
 
   const onArchiveCall = (e) => {
     e.preventDefault();
@@ -19,7 +19,9 @@ console.log('key', createdAt)
     axios.post(
       `https://aircall-job.herokuapp.com/activities/${id}`, postData,
     ).then(response => {
-      console.log(response);
+      setSeen(true)
+      console.log(response.data);
+      console.log(seen)
     })
   }
 

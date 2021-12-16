@@ -4,7 +4,7 @@ import Archive from './Archive.jsx';
 import Call from './Call.jsx';
 
 const ActivityFeed = (props) => {
-  const {calls} = props;
+  const {calls, onArchive} = props;
   const activeFeed = 'activeFeed';
   const archive = 'archive';
   let [mode, setMode] = useState(activeFeed);
@@ -22,6 +22,7 @@ const ActivityFeed = (props) => {
               duration={call.duration}
               isArchived={call.is_archived}
               callType={call.call_type}
+              onArchive={onArchive}
              />
     }
   });
