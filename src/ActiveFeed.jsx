@@ -20,7 +20,6 @@ const ActivityFeed = (props) => {
   })
   return (
     <div className="activity_feed">
-      <p>ACTIVITY FEED</p>
       {callList}
     </div>
   );
