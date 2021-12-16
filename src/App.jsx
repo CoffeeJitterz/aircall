@@ -7,9 +7,7 @@ import ActivityFeed from './ActiveFeed.jsx';
 import Archive from './Archive.jsx'
 
 const App = () => {
-  const activeFeed = 'activeFeed';
-  const archive = 'archive';
-  let [mode, setMode] = useState(activeFeed);
+  
   const [calls, setCalls] = useState([]);
 
   useEffect(() => {
@@ -28,18 +26,8 @@ console.log(calls)
     <div className='container'>
       <Header
       />
-      <button onClick={() => setMode(activeFeed)}>CALLS</button>
-      <button onClick={() => setMode(archive)}>ARCHIVE</button>
-      <div className="activity_container">
-      {mode === activeFeed && (
-        <ActivityFeed 
-        calls={calls}
-        />
-      )}
-       {mode === archive && (
-        <Archive />
-      )}
-    </div>
+      <ActivityFeed calls={calls}/>
+      
     </div>
   );
 };
