@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-import Archive from './Archive.jsx';
 import Active from './Active.jsx';
+import Archive from './Archive';
 
 const Feed = (props) => {
   const {calls,} = props;
