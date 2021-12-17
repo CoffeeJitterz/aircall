@@ -1,6 +1,9 @@
-import React, {useState} from 'react';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
 
-const Archive = (props) => {
+import './css/call.css'
+
+const Active = (props) => {
   const {id, createdAt, direction, from, to, via, duration, isArchived, callType, onClick} = props;
 
   //create mode to toggle details open and closed
@@ -21,22 +24,22 @@ const Archive = (props) => {
         </div>
       )}
       {details === open && (
-      <div onClick={() => setDetails(closed)}>
-        <div className="call_type">
-          <p>{callType}</p>
+        <div onClick={() => setDetails(closed)}>
+          <div className="call_type">
+            <p>{callType}</p>
+          </div>
+          <div className="call_description">
+            <p>{from}</p>
+            <p>tried to call you on {via}</p>
+          </div>
+          <div>
+            <p>{parseTime}</p>
+            <button onClick={onClick(id)}>seen </button>
+          </div> 
         </div>
-        <div className="call_description">
-          <p>{from}</p>
-          <p>tried to call you on {via}</p>
-        </div>
-        <div>
-          <p>{parseTime}</p>
-          <button onClick={onClick(id, true)}>seen </button>
-        </div> 
-      </div>
       )}
     </div>
   );
 };
 
-export default Archive;
+export default Active;

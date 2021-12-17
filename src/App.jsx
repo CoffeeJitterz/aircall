@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import Header from './Header.jsx';
-import ActivityFeed from './ActiveFeed.jsx';
+import Feed from './Feed.jsx';
 import Archive from './Archive.jsx'
 
 const App = () => {
@@ -14,30 +14,18 @@ const App = () => {
     axios.get(' https://aircall-job.herokuapp.com/activities')
     .then (res => {
       setCalls(res.data)
-      console.log(res.data)
+      console.log("calls:", calls)
     })
     .catch(err => {
       console.log(err)
     })
   },[]);
-  // const onArchive = (e) => {
-  //   e.preventDefault();
-  //   const postData = {
-  //     is_archived: true
-  //   };
-  //   axios.post(
-  //     `https://aircall-job.herokuapp.com/activities/${id}`, postData,
-  //   ).then(response => {
-  //     console.log(response);
-  //   })
-  // }
 
-console.log(calls)
   return (
     <div className='container'>
       <Header
       />
-      <ActivityFeed calls={calls} />
+      <Feed calls={calls} />
       
     </div>
   );
