@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
-
-import './css/call.css'
+import './css/feed.css'
 
 const Active = (props) => {
   const {id, createdAt, direction, from, to, via, duration, isArchived, callType, onClick} = props;
@@ -16,25 +15,42 @@ const Active = (props) => {
   const parseTime = parseDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 
   return (
-    <div className="call">
+    <div className="call_container">
       {details === closed && (
-        <div onClick={() => setDetails(open)}>
-          <p>{callType}</p>
-          <p>{from}</p>
+        <div className="call_closed">
+          <h5>{callType}</h5>
+          <h5>{from}</h5>
+          <button className="details" onClick={() => setDetails(open)}>details</button>
         </div>
       )}
       {details === open && (
-        <div onClick={() => setDetails(closed)}>
+        <div className="details_open">
           <div className="call_type">
-            <p>{callType}</p>
+          <h5>{callType}</h5>
+          <h5>{from}</h5>
+          <p>{parseTime}</p>
           </div>
+          {callType === 'missed' && (
           <div className="call_description">
-            <p>{from}</p>
-            <p>tried to call you on {via}</p>
+            <p>{from} tried to call you on {via} at {parseTime}</p>
+            <p></p>
           </div>
-          <div>
-            <p>{parseTime}</p>
-            <button onClick={onClick(id)}>seen </button>
+          )}
+            {callType === 'voicemail' && (
+          <div className="call_description">
+            <p>{from} tried to call you on {via} at {parseTime}</p>
+            <p></p>
+          </div>
+          )}
+          {callType === 'answered' && (
+          <div className="call_description">
+            <p>{from} called you from {via} at {parseTime}</p>
+            <p>The call lasted {duration} minutes</p>
+          </div>
+          )}
+          <div className="buttons">
+            <button onClick={() => onClick(id)}>mark as seen </button>
+            <button className="details" onClick={() => setDetails(closed)}>close</button>
           </div> 
         </div>
       )}

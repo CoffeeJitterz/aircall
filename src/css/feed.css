@@ -1,0 +1,51 @@
+.feed {
+  margin: 1em;
+}
+
+.call_container {
+  border-style: solid;
+  border-color: rgb(62, 62, 255);
+
+  margin: 1em;
+}
+.call_container:hover {
+  box-shadow: 2px 5px  rgb(255, 250, 183);
+ 
+}
+
+.call_closed {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+}
+.details {
+ height: 3vh;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em;
+}
+
+.call_type {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1em;
+}
+
+.call_description {
+  background-color: rgb(127, 176, 255);
+  text-align: center;
+  margin: 1em;
+  border-style: solid;
+  border-color: rgb(62, 62, 255);
+}
+button {
+  background-color: rgb(98, 98, 255);
+}
+button:hover{
+  background-color: rgb(255, 250, 183);
+}

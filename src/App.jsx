@@ -25,7 +25,7 @@ const App = () => {
     <div className='container'>
       <Header
       />
-      <Feed calls={calls} />
+      <Feed calls={calls} setCalls={setCalls} />
       
     </div>
   );
