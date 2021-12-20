@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 import Active from './Active.jsx';
-import Archive from './Archive';
+import Archive from './Archive.jsx';
 
 const Feed = (props) => {
   const {calls,} = props;
